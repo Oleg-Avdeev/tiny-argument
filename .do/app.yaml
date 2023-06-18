@@ -1,0 +1,8 @@
+name: tiny-argument
+services:
+- environment_slug: node-js
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: Oleg-Avdeev/tiny-argument
+  name: tiny-argument
