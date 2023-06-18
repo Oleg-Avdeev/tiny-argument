@@ -1,0 +1,12 @@
+{
+	"name": "argument-online",
+	"version": "0.0.1",
+	"type": "module",
+	"description": "Basic Argument client-server",
+	"dependencies": {
+		"express": "^4.18.2",
+		"lowdb": "^6.0.1",
+		"socket.io": "^4.6.2",
+		"underscore": "^1.13.6"
+	}
+}

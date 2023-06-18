@@ -1,0 +1,25 @@
+{
+  "hello33": {
+    "meta": {
+      "player-1": "Чёрная Птичка",
+      "player-2": "Агат"
+    },
+    "player-2": {
+      "path-1": "white",
+      "acquired-2": "white",
+      "path-2": "white"
+    },
+    "player-1": {
+      "improvisation-1": "black",
+      "improvisation-2": "black",
+      "acquired-1": "black",
+      "acquired-2": "black",
+      "principle-2": "black",
+      "principle-1": "black",
+      "path-2": "white",
+      "price-1": "white",
+      "price-2": "white",
+      "path-1": "white"
+    }
+  }
+}

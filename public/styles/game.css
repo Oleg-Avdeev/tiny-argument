@@ -1,0 +1,80 @@
+html, body {
+	background-color: #fcfcfa;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	margin: 0;
+	padding: 0;
+}
+
+/* * { outline: 1px dashed red; } */
+  
+.container {
+	overflow-y: hidden;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	flex-direction: column;
+	flex-basis: auto;
+	height: 100vh;
+}
+
+.container .field {
+	height: 50%;
+	position: relative;
+}
+
+.container .field-image {
+	height: 100%;
+}
+
+.container .slot {
+	width: 15%;
+	height: 15%;
+	position: absolute;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.container .slot.black {
+	background: radial-gradient(circle, rgba(80,80,80,1) 0%, rgba(10,10,10,1) 100%);
+	box-shadow: -3px 3px 6px 8px rgba(0,0,0,0.2);
+	background-position: 15px -8px;
+}
+
+.container .slot.white {
+	background: radial-gradient(circle, rgba(250,250,250,1) 0%, rgba(200,200,200,1) 100%);
+	box-shadow: -3px 3px 6px 8px rgba(0,0,0,0.2);
+	background-position: 15px -8px;
+}
+
+.container input.name {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 40%;
+	left: 50%;
+	top: 71%;
+	
+	background-color: transparent;
+	box-shadow: none;
+	border: none;
+	
+	text-transform: uppercase;
+	text-align: center;
+
+	font-size: 12pt;
+	font-weight: 500;
+	letter-spacing: -0.05ch;
+}
+
+.container .slot#path-1 { right: 26.8%; top: 4.6%;}
+.container .slot#path-2 { left: 26.8%; top: 4.6%;}
+.container .slot#principle-1 { top: 26.8%; left: 4.6%;}
+.container .slot#principle-2 { bottom: 26.8%; left: 4.6%;}
+.container .slot#improvisation-1 { left: 26.8%; bottom: 4.6%;}
+.container .slot#improvisation-2 { right: 26.8%; bottom: 4.6%;}
+.container .slot#acquired-1 { bottom: 26.8%; right: 4.6%;}
+.container .slot#acquired-2 { top: 26.8%; right: 4.6%;}
+.container .slot#price-1 { top: 42.5%; left: 25%;}
+.container .slot#price-2 { top: 42.5%; right: 24.8%;}

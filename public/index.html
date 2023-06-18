@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Tiny Argument</title>
+	<link rel="stylesheet" href="/styles/game.css">
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="field" id="player-1">
+			<img class="field-image" src="/img/master-field.png">
+			<div class="slot" id="path-1"></div>
+			<div class="slot" id="path-2"></div>
+			<div class="slot" id="principle-1"></div>
+			<div class="slot" id="principle-2"></div>
+			<div class="slot" id="improvisation-1"></div>
+			<div class="slot" id="improvisation-2"></div>
+			<div class="slot" id="acquired-1"></div>
+			<div class="slot" id="acquired-2"></div>
+			<div class="slot" id="price-1"></div>
+			<div class="slot" id="price-2"></div>
+			<input type="text" class="name" value="Мастер">
+		</div>
+		<div class="field" id="player-2">
+			<img class="field-image" src="/img/player-field.png">
+			<div class="slot" id="path-1"></div>
+			<div class="slot" id="path-2"></div>
+			<div class="slot" id="principle-1"></div>
+			<div class="slot" id="principle-2"></div>
+			<div class="slot" id="improvisation-1"></div>
+			<div class="slot" id="improvisation-2"></div>
+			<div class="slot" id="acquired-1"></div>
+			<div class="slot" id="acquired-2"></div>
+			<div class="slot" id="price-1"></div>
+			<div class="slot" id="price-2"></div>
+			<input type="text" class="name" value="Игрок">
+		</div>
+	</div>
+
+	<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
+
+	<script>
+		var socket = io();
+
+		let keys = ['path', 'principle', 'improvisation', 'acquired', 'price'];
+		let amount = 2;
+
+		let top_player = {
+			id: "player-1",
+			name_input: {},
+			slots: []
+		}
+
+		let bottom_player = {
+			id: "player-2",
+			name_input: {},
+			slots: []
+		}
+
+		setUpPlayer(top_player);
+		setUpPlayer(bottom_player);
+
+		socket.on('state', function (msg) {
+
+			top_player.name_input.value = msg.meta[top_player.id];
+			bottom_player.name_input.value = msg.meta[bottom_player.id];
+
+			msg.table.forEach(state => {
+
+				let player = state.player;
+				let slot = state.slot;
+				let color = state.color;
+
+				let slotElement = document.querySelector(`#${player} #${slot}`);
+				slotElement.classList.remove('black', 'white');
+				if (color) slotElement.classList.add(color);
+			});
+
+		});
+
+		function setUpPlayer(player) {
+
+			let field = document.getElementById(player.id);
+			let input = field.querySelector(".name");
+
+			player.name_input = input;
+
+			keys.forEach(key => {
+				for (let i = 1; i <= amount; i++) {
+					let id = `${key}-${i}`;
+					let slot = field.querySelector('#' + id);
+					player.slots.push(slot);
+
+					slot.addEventListener('click', function (e) {
+						socket.emit('toggle', player.id, id);
+					})
+				}
+			});
+
+			input.addEventListener('keyup', _.debounce(() => {
+				let value = input.value;
+				socket.emit('setName', player.id, value);
+			}, 500));
+		}
+
+	</script>
+</body>
+
+</html>
