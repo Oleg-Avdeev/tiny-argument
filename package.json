@@ -10,7 +10,7 @@
 		"underscore": "^1.13.6"
 	},
 	"scripts": {
-		"start": "node index.js"
+		"start": "node ./bin/www.js"
 	},
 	"engines": {
 		"node": "16.x"
