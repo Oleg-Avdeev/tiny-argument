@@ -49,6 +49,12 @@ html, body {
 	background-position: 15px -8px;
 }
 
+.container .slot.red {
+	background: radial-gradient(circle, rgb(255, 69, 69), rgb(157, 0, 0));
+	box-shadow: -3px 3px 6px 8px rgba(0,0,0,0.2);
+	background-position: 15px -8px;
+}
+
 .container input.name {
 	position: absolute;
 	transform: translate(-50%, -50%);

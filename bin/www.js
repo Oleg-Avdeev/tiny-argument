@@ -62,7 +62,8 @@ io.on('connection', (socket) => {
 		
 		if (!current) next = 'white';
 		else if (current == 'white') next = 'black';
-		else if (current == 'black') next = '';
+		else if (current == 'black') next = 'red';
+		else if (current == 'red') next = '';
 		db.data[table][player][slot] = next;
 
 		db.write();
